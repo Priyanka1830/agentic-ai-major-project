@@ -1,0 +1,39 @@
+product_query_generator_task:
+  description: >
+    Product Query Generator
+  expected_output: >
+    Transform provided SKU info into effective web product search queries.
+  agent: >
+    product_query_generator
+
+price_availability_extractor_task:
+  description: >
+    Price & Availability Extractor
+  expected_output: >
+    Parse search results to extract accurate competitor price points and stock status information.
+  agent: >
+    price_availability_extractor
+
+pricing_advisor_task:
+  description: >
+    Pricing Advisor
+  expected_output: >
+    Recommend pricing actions based on analysis of current competitor pricing and availability intelligence.
+  agent: >
+    pricing_advisor
+
+change_detector_task:
+  description: >
+    Change Detector
+  expected_output: >
+    Detect and highlight key changes in competitor pricing or stock status compared to previous observations.
+  agent: >
+    change_detector
+
+serper_search_agent_task:
+  description: >
+    Serper Search Agent
+  expected_output: >
+    Retrieve up-to-date competitor product listings and pricing details using the Serper API.
+  agent: >
+    serper_search_agent
