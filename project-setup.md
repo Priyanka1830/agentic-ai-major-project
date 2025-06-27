@@ -19,5 +19,6 @@
     3. `crewai create crew <your_project_name>`
     4. `crewai install`
     5. `crewai run`
-8. Install streamlit.
+8. Add `.env` file.
+9. Install streamlit.
 
