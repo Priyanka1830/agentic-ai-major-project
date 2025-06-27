@@ -27,9 +27,16 @@ class AgenticAiCrew():
         )
 
     @agent
-    def reporting_analyst(self) -> Agent:
+    def newsletter_writer(self) -> Agent:
         return Agent(
-            config=self.agents_config['reporting_analyst'], # type: ignore[index]
+            config=self.agents_config['newsletter_writer'], # type: ignore[index]
+            verbose=True
+        )
+
+    @agent
+    def newsletter_editor(self) -> Agent:
+        return Agent(
+            config=self.agents_config['newsletter_editor'],
             verbose=True
         )
 
@@ -43,10 +50,15 @@ class AgenticAiCrew():
         )
 
     @task
-    def reporting_task(self) -> Task:
+    def newsletter_writer_task(self) -> Task:
         return Task(
-            config=self.tasks_config['reporting_task'], # type: ignore[index]
-            output_file='report.md'
+            config=self.tasks_config['newsletter_writer_task'],
+        )
+
+    @task
+    def newsletter_editor_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['newsletter_editor_task'],
         )
 
     @crew
