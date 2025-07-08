@@ -2,6 +2,7 @@ import streamlit as st
 from crew import AgenticAiCrew
 from datetime import datetime
 from dotenv import load_dotenv
+
 load_dotenv()
 
 # Function to run the crew

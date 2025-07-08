@@ -14,7 +14,8 @@
 5. pip install virtualenv.
 6. Activate the virtual env.
 7. Within the Virtual env:
-    1. `pip install uv`
+    1. `pip install uv crewai streamlit`
+        1.1. `pip install 'crewai[tools]'`
     2. `uv tool install crewai`
     3. `crewai create crew <your_project_name>`
     4. `crewai install`
