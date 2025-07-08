@@ -59,6 +59,8 @@ class AgenticAiCrew():
     def newsletter_editor_task(self) -> Task:
         return Task(
             config=self.tasks_config['newsletter_editor_task'],
+            # This will save the output to a file if enabled
+            # output_file="final_newsletter.md"
         )
 
     @crew
