@@ -4,9 +4,28 @@ import traceback
 from dotenv import load_dotenv
 load_dotenv()
 
-st.set_page_config(page_title="CodeBuddy: Your AI Coding Assistant", page_icon=":robot_face:")
+safe_builtins = {
+    "print": print,
+    "range": range,
+    "len": len,
+    "int": int,
+    "float": float,
+    "str": str,
+    "bool": bool,
+    "list": list,
+    "dict": dict,
+    "set": set,
+    "tuple": tuple,
+    "enumerate": enumerate,
+    "abs": abs,
+    "min": min,
+    "max": max,
+    "sum": sum,
+}
 
-st.title("🤖 CodeBuddy: Your AI Coding Assistant")
+st.set_page_config(page_title="CodeBuddy: AI Coding Assistant", page_icon=":robot_face:")
+
+st.title("🤖 CodeBuddy: AI Coding Assistant")
 
 client = OpenAI()
 
@@ -20,7 +39,9 @@ with st.sidebar:
         "Write a for loop to print numbers 1-10.",
         "How do I read a file line by line in Python?",
     ]
-    selected_example = st.selectbox("Select an example prompt:", [None] + EXAMPLES)
+    selected_example = st.selectbox("Select an example prompt:",
+                                    [None] + EXAMPLES,
+                                    key="example_prompt")
     st.markdown("---")
     language = st.radio("Programming language for answers", ["Python", "JavaScript", "C++", "Other"], index=0)
     st.markdown("---")
@@ -75,7 +96,7 @@ for i, message in enumerate(st.session_state.messages[1:]):  # don't display sys
                             buf = io.StringIO()
                             with contextlib.redirect_stdout(buf):
                                 local_vars = {}
-                                exec(code, {'__builtins__': {}}, local_vars)  # Only allow limited builtins
+                                exec(code, {'__builtins__': safe_builtins}, local_vars)  # Only allow limited builtins
                             result = buf.getvalue()
                             st.success(f"Output:\n\n{result if result else 'No output.'}")
                         except Exception as e:
@@ -86,15 +107,17 @@ for i, message in enumerate(st.session_state.messages[1:]):  # don't display sys
 # --- PROMPT HANDLING ---
 # Pre-fill chat input with example if chosen
 
-
 if st.sidebar.button("Send this example ▶️", disabled=not selected_example):
     st.session_state["pending_prompt"] = selected_example
 
 # Always show input box unless servicing pending button click
+chat_input_text = st.chat_input("Ask me a programming question!")
+
+prompt = None
 if "pending_prompt" in st.session_state:
     prompt = st.session_state.pop("pending_prompt")
 else:
-    prompt = st.chat_input("Ask me a programming question!")
+    prompt = chat_input_text
 
 if prompt or error_input:
     # Append user prompt
