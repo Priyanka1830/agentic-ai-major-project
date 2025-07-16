@@ -58,7 +58,8 @@ SYSTEM_PROMPT = {
         "You write concise, clear explanations. "
         "For code, use markdown triple backticks with proper syntax highlighting. "
         "If an error message is given, analyze and help fix it."
-    )
+    ),
+    "is_algo_buddy": False
 }
 
 if "openai_model" not in st.session_state:
@@ -72,6 +73,9 @@ if "messages" not in st.session_state or st.session_state.get("selected_language
 
 # --- DISPLAY MESSAGE HISTORY ---
 for i, message in enumerate(st.session_state.messages[1:]):  # don't display system
+    if message.get("is_algo_buddy", None):
+        continue
+
     with st.chat_message(message["role"]):
         # Detect if this message is an assistant code output
         if message["role"] == "assistant" and "```" in message["content"]:
@@ -129,7 +133,7 @@ if prompt or error_input:
     with st.chat_message("assistant"):
         stream = client.chat.completions.create(
             model=st.session_state["openai_model"],
-            messages=st.session_state.messages,
+            messages=[message for message in st.session_state.messages if not message.get("is_algo_buddy", None)],
             stream=True,
         )
         response = st.write_stream(stream)

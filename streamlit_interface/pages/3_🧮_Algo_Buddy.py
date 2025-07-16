@@ -33,21 +33,23 @@ SYSTEM_PROMPT = {
         "flowcharts (use text-art, provide the best one possible), or analogies—avoid code snippets unless the user explicitly asks for code. "
         "Whenever possible, walk through at least one complete example or dataset. "
         "Be concise, engaging, and clear; focus on *how* the algorithm does what it does."
-    )
+    ),
+    "is_algo_buddy": True
 }
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-4.1"
 
 
-if "messages" not in st.session_state:
+if "messages" not in st.session_state or not st.session_state.messages[0].get("is_algo_buddy", None):
     # Reset on language switch
     st.session_state.messages = [SYSTEM_PROMPT]
 
 # --- DISPLAY MESSAGE HISTORY ---
 for message in st.session_state.messages[1:]:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"], unsafe_allow_html=False)
+    if message.get("is_algo_buddy", None):
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"], unsafe_allow_html=False)
 
 if st.sidebar.button("Send this example ▶️", disabled=not selected_example):
     st.session_state["pending_prompt"] = selected_example
@@ -65,15 +67,15 @@ if prompt:
     # Append user prompt
     user_input = prompt if prompt else ""
 
-    st.session_state.messages.append({"role": "user", "content": user_input})
+    st.session_state.messages.append({"role": "user", "content": user_input, "is_algo_buddy": True})
     with st.chat_message("user"):
         st.markdown(user_input)
 
     with st.chat_message("assistant"):
         stream = client.chat.completions.create(
             model=st.session_state["openai_model"],
-            messages=st.session_state.messages,
+            messages=[message for message in st.session_state.messages if message.get("is_algo_buddy", None)],
             stream=True,
         )
         response = st.write_stream(stream)
-    st.session_state.messages.append({"role": "assistant", "content": response})
+    st.session_state.messages.append({"role": "assistant", "content": response, "is_algo_buddy": True})
