@@ -38,19 +38,37 @@ st.markdown(
     - **Debugging:** Get step-by-step help fixing errors.
     - **Learning:** Ask questions about algorithms, syntax, or best practices.
     
-    👉 _Accessible from the sidebar/pages!_ (Requires your OpenAI API key.)
+    👉 _Accessible from the sidebar/pages!_
     """
 )
 
 st.markdown("---")
+st.header("🧮 Algo Buddy")
 st.markdown(
     """
-    ### 🚀 Get Started
+    **Algorithm Buddy** can visualize any algorithm:
     
-    - Use the navigation menu on the left to choose a feature.
-    - Want more tools? [Suggest ideas or contribute on GitHub!](https://github.com/)
+    - **Algorithm:** Provide an intuition of the algorithm.
+    - **Visual tracing:** Provide an example and explain the step by step process.
+    - **Flow chart:** Give a flowchart to understand the flow of algorithm.
     
-    ---
-    > _AI Study Buddy is open-source. Built with ❤️ using [Streamlit](https://streamlit.io)._
+    👉 _Accessible from the sidebar/pages!_
     """
 )
+
+st.markdown("---")
+st.header("📖 Road Map Buddy")
+st.markdown(
+    """
+    **Road Map Buddy** can create you a detailed road map to master any topic:
+    
+    - **Topic Analyst Agent:** Research all the prerequisites and subtopics to master a topic.
+    - **Syllabus Designer Agent:** Break down the learning process into logical plan of action.
+    - **Resource Finder Agent:** Get the best resources to start learning.
+    - **Schedle Generator Agent:** Provides a detailed roadmap with all the milestones and expected learning outcomes.
+    
+    👉 _Accessible from the sidebar/pages!_
+    """
+)
+
+st.markdown("---")
