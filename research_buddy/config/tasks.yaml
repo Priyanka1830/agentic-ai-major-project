@@ -1,0 +1,25 @@
+research_task:
+  description: >
+    Conduct a thorough research about {topic}
+    Make sure you find any interesting and relevant information given
+    the current year is {current_year}. Get a lot of details about {topic} and breakthroughs in the {topic}.
+  expected_output: >
+    A list with 20 bullet points of the most relevant information about {topic}
+  agent: researcher
+
+research_article_writer_task:
+  description: >
+    Write a detailed research article about {topic}
+    Make sure to highlight the breakthroughs in the {topic} and Write it in a way that
+    it keeps the reader engaged and curious throughout the article
+  expected_output: >
+    A clear and detailed research article about {topic} with attention to every detail
+  agent: research_article_writer
+
+research_article_editor_task:
+  description: >
+    Edit a research article about {topic}
+    Make sure to add details and make the content more engaging.
+  expected_output: >
+    A research article about {topic}
+  agent: research_article_editor
