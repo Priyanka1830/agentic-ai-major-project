@@ -43,7 +43,7 @@ with st.sidebar:
                                     [None] + EXAMPLES,
                                     key="example_prompt")
     st.markdown("---")
-    language = st.radio("Programming language for answers", ["Python", "JavaScript", "C++", "Other"], index=0)
+    language = st.radio("Programming language for answers", ["Python", "JavaScript", "C++", "Java"], index=0)
     st.markdown("---")
     st.markdown("### 🛠 Paste your error here for debugging help!")
     error_input = st.text_area("Error message (optional)", "")

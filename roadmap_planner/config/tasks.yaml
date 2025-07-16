@@ -1,0 +1,39 @@
+topic_analyst_task:
+  description: >
+    Conduct a thorough research about {topic}
+    Make sure you find all the prerequisites and subtopics that are essential to master the {topic}
+    within {number_of_days} days.
+  expected_output: >
+    A list of all the prequisites and subtopics required to master {topic}
+    and one line of why the subtopic is important
+  agent: topic_analyst
+
+syllabus_designer_task:
+  description: >
+    Design a syllabus for mastering {topic} in {number_of_days} days
+    Make sure to break down the {topic} into subtopics and prequisites into a logical plan
+    of action.
+  expected_output: >
+    A detailed roadmap to master {topic} presented neatly with plan of action for mastering it
+    in {number_of_days} days
+  agent: syllabus_designer
+
+resource_finder_task:
+  description: >
+    Find best resources possible to master {topic}
+    make sure get good documentations, blogs, courses, and organize them as hyperlinks.
+  expected_output: >
+    A list of top 10 resources to master {topic}.
+    Present them as hyperlinks.
+  agent: resource_finder
+
+schedule_generator_task:
+  description: >
+    Combine all the roadmap to master {topic}
+    Give a detailed roadmap with miletones of subtopics and prequisites and makesure it can be achievable in
+    {number_of_days} days. Add the resources to master and provide expected learning outcomes for each roadmap.
+  expected_output: >
+    A fully fledged roadmap with the prequisites, subtopics and important topics,
+    each with a full section of information and expected learning outcomes. Also include all the resources.
+    Formatted as markdown without '```'
+  agent: schedule_generator
