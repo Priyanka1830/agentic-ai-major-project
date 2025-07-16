@@ -64,8 +64,6 @@ SYSTEM_PROMPT = {
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-4.1"
 
-if "messages" not in st.session_state:
-    st.session_state.messages = [SYSTEM_PROMPT]
 
 if "messages" not in st.session_state or st.session_state.get("selected_language") != language:
     # Reset on language switch
