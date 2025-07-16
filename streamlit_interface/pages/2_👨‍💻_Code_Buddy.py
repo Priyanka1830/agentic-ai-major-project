@@ -23,9 +23,9 @@ safe_builtins = {
     "sum": sum,
 }
 
-st.set_page_config(page_title="CodeBuddy: AI Coding Assistant", page_icon=":robot_face:")
+st.set_page_config(page_title="CodeBuddy: AI Coding Assistant", page_icon="👨‍💻")
 
-st.title("🤖 CodeBuddy: AI Coding Assistant")
+st.title("👨‍💻 CodeBuddy: AI Coding Assistant")
 
 client = OpenAI()
 

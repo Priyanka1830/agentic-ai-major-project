@@ -8,6 +8,16 @@ from datetime import datetime
 from dotenv import load_dotenv
 load_dotenv()
 
+st.set_page_config(page_title="ResearchBuddy: Research Article Generator", page_icon="🧑‍🔬")
+
+# Streamlit UI
+st.title("🧑‍🔬 ResearchBuddy: Research Article Generator")
+st.write("This application helps you to write a detailed research article based on a given topic.")
+
+# Input for the topic
+topic = st.text_input("Enter a topic for the Research:")
+
+
 # Function to run the crew
 def run_crew(topic):
     inputs = {
@@ -27,12 +37,6 @@ def run_crew(topic):
     except Exception as e:
         return f"An error occurred while running the crew: {e}"
 
-# Streamlit UI
-st.title("AI Crew Research Article Generator")
-st.write("This application helps you to write a detailed research article based on a given topic.")
-
-# Input for the topic
-topic = st.text_input("Enter a topic for the Research:")
 
 # Button to run the crew
 if st.button("Generate Research Article"):
