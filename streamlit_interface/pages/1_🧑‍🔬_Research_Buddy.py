@@ -8,7 +8,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 load_dotenv()
 
-st.set_page_config(page_title="ResearchBuddy: Research Article Generator", page_icon="🧑‍🔬")
+st.set_page_config(page_title="ResearchBuddy: Research Article Generator", layout="wide", page_icon="🧑‍🔬")
 
 # Streamlit UI
 st.title("🧑‍🔬 ResearchBuddy: Research Article Generator")

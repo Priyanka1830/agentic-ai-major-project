@@ -23,7 +23,7 @@ safe_builtins = {
     "sum": sum,
 }
 
-st.set_page_config(page_title="CodeBuddy: AI Coding Assistant", page_icon="👨‍💻")
+st.set_page_config(page_title="CodeBuddy: AI Coding Assistant", layout="wide", page_icon="👨‍💻")
 
 st.title("👨‍💻 CodeBuddy: AI Coding Assistant")
 
