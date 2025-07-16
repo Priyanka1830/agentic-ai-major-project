@@ -7,6 +7,14 @@ research_task:
     A list with 10 bullet points of the most relevant information about {topic}
   agent: researcher
 
+research_article_editor_task:
+  description: >
+    Edit a research article about {topic}
+    Make sure to add details and make the content more engaging.
+  expected_output: >
+    A research article about {topic} presented neatly (without bullet points)
+  agent: research_article_editor
+
 research_article_writer_task:
   description: >
     Write a detailed research article about {topic}
@@ -16,11 +24,3 @@ research_article_writer_task:
     A clear and detailed research article about {topic} with attention to every detail
     A neat markdown with proper heading hierarchy is expected without any bullet points.
   agent: research_article_writer
-
-research_article_editor_task:
-  description: >
-    Edit a research article about {topic}
-    Make sure to add details and make the content more engaging.
-  expected_output: >
-    A research article about {topic} presented neatly (without bullet points)
-  agent: research_article_editor
